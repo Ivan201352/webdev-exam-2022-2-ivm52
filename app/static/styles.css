@@ -1,0 +1,118 @@
+.logo-libary {
+    height: 70px;
+    margin-right: 10px;
+}
+
+.logo-user {
+    height: 70px;
+    margin-left: 10px;
+}
+
+.header, .footer {
+    border-color: rgb(117, 139, 201)!important;
+    border-width: 3px!important;
+}
+
+.books {
+    background-color: rgb(200, 211, 219);
+}
+
+.card-book {
+    border-style: double!important;
+    border-color: rgb(117, 139, 201)!important;
+    border-width: 5px!important;
+    border-radius: 5px!important;
+    background-color: ghostwhite;
+}
+
+.book-cover {
+    min-width: 170px;
+    width: 98%;
+    height: 250px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-book-img {
+    border-width: 5px!important;
+    border-color: rgb(117, 139, 201)!important;
+    border-bottom-style: double!important;
+}
+
+.card-book-buttons {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.button-primary {
+    width: 50%;
+}
+
+.button-danger {
+    width: 25%;
+}
+
+.show-img {
+    height: 400px;
+    width: 98%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-left: auto;
+}
+
+.genre-li {
+    background-color: rgb(246, 239, 195)!important;
+    padding-left: 2px;
+    list-style-type: none!important;
+    border-left: solid;
+    border-left-width: 3px!important;
+    border-bottom-width: 3px!important;
+    border-radius: 3px!important;
+    border-color: rgb(117, 139, 201)!important;
+}
+
+.review-card {
+    background-color: ghostwhite!important;
+    border-width: 5px!important;
+    border-color: rgb(117, 139, 201)!important;
+    border-style: double!important;
+    border-radius: 5px!important;
+}
+
+.review-header {
+    border-color: rgb(117, 139, 201)!important;
+    border-width: 3px!important;
+}
+
+.review-header-info {
+    border-left: solid;
+    border-color: rgb(117, 139, 201)!important;
+    border-width: 3px!important;
+    text-align: start;
+}
+
+.review-header-info-data {
+    text-align: end;
+}
+
+.vr-genre {
+    border-right: solid!important;
+    border-color: rgb(117, 139, 201)!important;
+    border-width: 2px!important;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.rate-card {
+    margin-right: 30px;
+}
+
+.card-book-name {
+    border-bottom: solid!important;
+    border-color: rgb(117, 139, 201)!important;
+    border-width: 2px!important;
+}
