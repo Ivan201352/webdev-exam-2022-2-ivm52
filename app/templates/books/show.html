@@ -25,7 +25,7 @@
                 <p>Издательство: <span>{{ book.publishing_house}}</span></p>
             </div>
             <div class="mb-1">
-                <p>Количество страниц: <span>{{ book.pages }}</span></p>
+                <p>Кол-во страниц: <span>{{ book.pages }}</span></p>
             </div>
             <div class="mb-1">
                 <p class="mb-0">Жанр:</p>
@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="mb-3">
-        <h5 class="text-center">Краткое описание</h5>
+        <h5 class="text-center">Описание</h5>
         <p>{{ book.short_description }}</p>
     </div>
     <div class="mb-3">
@@ -89,7 +89,7 @@
             {% endif %}
         {% else %}
             <div class="text-center mb-2 mt-3">
-                <p>Войдите в аккаунт, чтобы вы могли оставить рецензию</p>
+                <p>Вы должны зайти в аккаунт, чтобы оставлять рецензии</p>
             </div>
         {% endif %}
         <div class="mb-3 mt-1">

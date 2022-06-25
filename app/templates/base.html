@@ -20,11 +20,6 @@
         <nav class="navbar bg-light">
             <div class="container-fluid">
                 <div class="logo navbar-brand d-flex flex-grow ">
-                    <a href="{{ url_for('index') }}">
-                        <img class="img-fluid logo-libary rounded-circle"
-                            src="{{ url_for('static', filename='images/png-transparent-library-technician-scalable-graphics-svg-library-angle-logo-monochrome.png') }}"
-                            alt="logo-libary">
-                    </a>
                     <p class="mt-auto mb-auto">Электронная библиотека</p>
                 </div>
                 <div class="nav-item">
@@ -32,10 +27,6 @@
                         <div class="d-flex flex-grow">
                             <div class="mt-auto mb-auto" >
                                 <a class="btn btn-lg btn-outline-dark" href="{{ url_for('auth.logout') }}">Выйти</a>
-                            </div>
-                            <div class="profile" title="{{ current_user.login }}">
-                                <img class="img-fluid rounded-circle cursor-pointer logo-user"
-                                    src="{{ url_for('static', filename='images/png-transparent-organization-七麥科技-logo-business-others-logo-business-data.png') }}" alt="profile-pic">
                             </div>
                         </div>
                     {% else %}

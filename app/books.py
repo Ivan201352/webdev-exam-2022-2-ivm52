@@ -21,8 +21,6 @@ def params():
             dict_param_of_book[p] = request.form.get(p)
     return dict_param_of_book
 
-    # return { p: request.form.get(p) for p in PARAM_OF_BOOK }
-
 def params_review():
     dict_param_of_review = {}
     for p in PARAM_OF_REVIEW:
@@ -53,14 +51,14 @@ def create():
     book = Book(**params())
 
     if len(request.form.get('short_description')) == 0 :
-        flash('Заполните поле "Краткое описание". Ошибка сохранения', 'danger')
+        flash('Заполните обязательное поле "Краткое описание". Ошибка сохранения', 'danger')
         return redirect(url_for('books.new'))
 
     try:
         db.session.add(book)
         db.session.commit()
     except: 
-        flash('Введены некорректные данные или не все поля заполнены. Ошибка сохранения', 'danger')
+        flash('Введите кореектные данные и проверьте заполнение всех полей. Ошибка сохранения', 'danger')
         return redirect(url_for('books.new'))
 
     genres = request.form.getlist('genres')
@@ -73,7 +71,7 @@ def create():
     if img:
         img_saver.bind_to_object(book)
 
-    flash(f'Книга "{book.name}" была успешно добавлена!', 'success')
+    flash(f'Книга "{book.name}" добавлена', 'success')
 
     return redirect(url_for('index'))
 
@@ -128,7 +126,7 @@ def update(book_id):
         db.session.add(book)
         db.session.commit()
     except:
-        flash('Заполниет, пожадуйста, все поля. Ошибка сохранения', 'danger')
+        flash('Заполните все поля. Ошибка сохранения', 'danger')
         return redirect(url_for('books.edit', book_id=book_id))
 
     genres = request.form.getlist('genres')
@@ -138,7 +136,7 @@ def update(book_id):
             1/0
             
     except:
-        flash('Выберите жанры. Ошибка сохранения', 'danger')
+        flash('Вы не выбрали жанр. Ошибка сохранения', 'danger')
         return redirect(url_for('books.edit', book_id=book_id))
     
     old_genres = Book_genre.query.filter(Book_genre.book_id == book_id)
@@ -172,7 +170,7 @@ def show(book_id):
 def review(book_id):
     review = Review(**params_review())
     if len(request.form.get('text')) == 0 :
-        flash('Пожалуйста, заполните поле текста рецензии. Ошибка сохранения', 'danger')
+        flash('Вы не заполнили поле текста рецензии. Ошибка сохранения', 'danger')
         return redirect(url_for('books.review', book_id=book_id))
     try:
         book = Book.query.filter_by(id=book_id).first()
@@ -184,7 +182,7 @@ def review(book_id):
         flash('Ошибка сохранения', 'danger')
         return redirect(url_for('books.review', book_id=book_id))
 
-    flash('Ваша рецензия успешно сохранена!', 'success')
+    flash('Ваша рецензия сохранена!', 'success')
     return redirect(url_for('books.show', book_id=book_id))
 
 @bp.route('/<int:book_id>/review')
@@ -197,14 +195,6 @@ def review_render(book_id):
 @check_rights('delete')
 @login_required
 def delete(book_id):
-    # book_genres = Book_genre.query.filter(Book_genre.book_id == book_id)
-    # for book_genre in book_genres:
-    #     db.session.delete(book_genre)
-    #     db.session.commit()
-
-    # Cover.query.filter(Cover.book_id == book_id).delete()
-    # db.session.commit()
-
     cover = Cover.query.filter(Cover.book_id == book_id).first()
     cover_id = cover.id
     img_del = ImageServer(cover)
@@ -213,5 +203,5 @@ def delete(book_id):
     Book.query.filter(Book.id == book_id).delete()
     db.session.commit()
 
-    flash(f'Книга была успешна удалена!', 'success')
+    flash(f'Книга была удалена', 'success')
     return redirect(url_for('index'))

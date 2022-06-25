@@ -8,12 +8,12 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 def init_login_manager(app):
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
-    login_manager.login_message = 'Для доступа к данной странице необходимо пройти процедуру аутентификации.'
+    login_manager.login_message = 'Для доступа к данной странице нужно пройти процедуру аутентификации.'
     login_manager.login_message_category = 'warning'
-    login_manager.user_loader(load_user)
+    login_manager.user_loader(Load_User)
     login_manager.init_app(app)
 
-def load_user(user_id):
+def Load_User(user_id):
     user = User.query.get(user_id)
     return user
 
@@ -27,10 +27,10 @@ def login():
             user = User.query.filter_by(login=login).first()
             if user and user.check_password(password):
                 login_user(user, remember=remember_me)
-                flash('Вы успешно аутентифицированы.', 'success')
+                flash('Вы успешно аутентифицировались.', 'success')
                 next = request.args.get('next')
                 return redirect(next or url_for('index'))
-        flash('Невозможно аутентифицироваться с указанными логином и паролем', 'danger')
+        flash('Невозможно аутентифицироваться с указанным логином и паролем', 'danger')
     return render_template('auth/login.html')
 
 @bp.route('/logout')
@@ -44,7 +44,7 @@ def check_rights(action):
         @wraps(func)
         def wrapper(*args, **kwargs):
             if not current_user.can(action, current_user.role_id):
-                flash('У вас недостаточно прав для доступа к данной странице', 'danger')
+                flash('У вас нету прав для доступа к данной странице', 'danger')
                 return redirect(url_for('index'))
             return func(*args, **kwargs)
         return wrapper

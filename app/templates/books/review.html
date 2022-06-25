@@ -4,7 +4,7 @@
 <div class="container">
     <form class="w-100" method="POST" action="{{ url_for('books.review', book_id=book.id) }}" enctype="multipart/form-data">
         <div class="form-group mt-2 mb-2">
-            <label for="rating">Оцените данную книгу:</label>
+            <label for="rating">Дайте оценку этой книге:</label>
             <select class="form-control" data-live-search="true" name="rating" id="rating">
                 <option value="5" selected >Отлично</option>
                 <option value="4">Хорошо</option>
@@ -19,7 +19,7 @@
         <input type="text" hidden name="user_id" value="{{ current_user.id }}">
 
         <div class="form-group">
-            <label for="text-content">Текст рецензии</label>
+            <label for="text-content">Ваша рецензия</label>
             <textarea class="form-control" name="text" id="rewiew-text" cols="30" rows="10"></textarea>
         </div>
         <div class="form-group text-center">

@@ -38,17 +38,17 @@
                     <p class=""><span>{{ "%.2f" | format(book.rating) }}</span> <span>★</span></p>
                 </div>
                 <div class="d-flex flex-row mb-0">
-                    <p class="fw-bold rate-card">Количество рецензий:</p>
+                    <p class="fw-bold rate-card">Кол-во рецензий:</p>
                     <p>{{ book.rating_num }}</p>
                 </div>
                 
             </div>
             <div class="btn-group mb-2 mt-2 card-book-buttons">
                 {% if current_user.role_id == 1 or current_user.role_id == 2 %}
-                <a class="btn btn-secondary" href="{{ url_for('books.edit', book_id=book.id) }}">Редактирование</a>
+                <a class="btn btn-secondary" href="{{ url_for('books.edit', book_id=book.id) }}">Редактировать</a>
                 {% endif %}
                 <a class="btn btn-primary button-primary"
-                    href="{{ url_for('books.show', book_id=book.id) }}">Просмотр</a>
+                    href="{{ url_for('books.show', book_id=book.id) }}">Посмотреть</a>
                 {% if current_user.role_id == 1 %}
                 <button type="button" class="btn btn-danger button-danger"
                     data-url="{{ url_for('books.delete', book_id=book.id) }}" data-bs-toggle="modal"
@@ -80,7 +80,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
             </div>
             <div class="modal-body">
-                <p>Вы уверены, что хотите удалить книгу <span id="book-name">{{ books.name }}</span>?</p>
+                <p>Вы действительно хотите удалить книгу? <span id="book-name">{{ books.name }}</span>?</p>
                 <form action="" method="POST">
                     <input type="hidden" name="book_id" value="">
                     <input id="delete-btn" type="submit" class="d-none">
